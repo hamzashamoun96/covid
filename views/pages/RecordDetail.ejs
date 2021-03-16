@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Details</title>
+    <link rel="stylesheet" href="../style/base.css">
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <p>Country : <%=DATA.country%>
+            </p>
+            <p>Total Confirmed Cases : <%=DATA.totalconfirmed%>
+            </p>
+            <p>Total Deaths : <%=DATA.totaldeaths%>
+            </p>
+            <p>Total Recovered Cases : <%=DATA.totalrecovered%>
+            </p>
+            <p>Date : <%=DATA.date%>
+            </p>
+
+            <button id="update">Update</button>
+
+
+
+            <form id="updateForm" action="/detail/<%=DATA.id%>?_method=put" method="post">
+               
+               <label for="">Country</label><br>
+                <input name="country" type="text" value="<%=DATA.country%>" ><br>
+               
+                <label for="">Total Confirmed</label><br>
+                <input name="totalconfirmed" type="text" value="<%=DATA.totalconfirmed%>"><br>
+               
+                <label for="">Total Deaths</label><br>
+                <input name="totaldeaths" type="text" value="<%=DATA.totaldeaths%>"><br>
+
+               <label for="">Total Recovered</label><br>
+                <input name="totalrecovered" type="text" value="<%=DATA.totalrecovered%>"><br>
+               
+                <label for="">Date</label><br>
+                <input name="date" type="date" value="<%=DATA.date%>"><br>
+
+                <button type="submit">UPDATE</button>
+            </form>
+
+
+
+            <form action="/detail/<%=DATA.id%>?_method=delete" method="post">
+                <button>DELETE</button>
+            </form>
+
+
+
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.js">
+    </script>
+    <script>
+        $('#updateForm').hide()
+        $('#update').on('click', () => {
+            $('#updateForm').toggle()
+        })
+    </script>
+</body>
+
+</html>
